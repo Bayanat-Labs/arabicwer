@@ -1,0 +1,35 @@
+arabicwer by Bayanat Labs
+Copyright 2026 Bayanat Labs
+
+This product includes software developed by Bayanat Labs (https://bayanatlabs.com).
+
+The code in this repository is licensed under the Apache License 2.0 (LICENSE).
+The scoring policies, specification, fixtures, case-study hypotheses and scores
+and the documentation listed in LICENSE-data are licensed under the Creative
+Commons Attribution 4.0 International License.
+
+The web page in web/ bundles the JavaScript port of arabic-normalize by Bayanat
+Labs (web/lib/, Apache-2.0, from https://github.com/Bayanat-Labs/arabic-normalize
+at commit dcc7f31cc5ae8b7b09e3de8401dcebe7aabc0240). Its generated tables
+(web/lib/generated/ucd-data.js) are derived from the Unicode Character Database,
+version 18.0.0, and are covered by the Unicode License V3; the full copyright and
+permission notice is in NOTICE-unicode.txt. Copyright (c) 1991-2026 Unicode, Inc.
+
+The web page also bundles the IBM Plex Sans Arabic font, version 1.005: the
+unmodified files IBMPlexSansArabic-Regular.woff2 and IBMPlexSansArabic-SemiBold.woff2
+from IBM's npm package @ibm/plex-sans-arabic 1.1.0. Copyright 2017 IBM Corp. with
+Reserved Font Name "Plex". Licensed under the SIL Open Font License, Version 1.1
+(web/fonts/OFL.txt). The font is not part of the Python package.
+
+Runtime dependencies of the Python package: arabic-normalize (Apache-2.0, Bayanat
+Labs) and RapidFuzz (MIT). jiwer (Apache-2.0) is optional and used in tests. No
+third-party code is copied into this repository.
+
+casestudy/references.jsonl contains reference transcriptions from FLEURS
+(google/fleurs, copyright Google, CC BY 4.0). The case-study hypotheses were
+produced by Bayanat Labs with openai/whisper-large-v3-turbo (MIT) and
+openai/whisper-small (Apache-2.0 per its model card), run through their
+faster-whisper conversions (MIT). No audio is included in this repository.
+
+The Bayanat Labs name, logo and project branding are not licensed under the
+Apache License 2.0 or under any data license in this repository.

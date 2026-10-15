@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "arabicwer"
+dynamic = ["version"]
+description = "Arabic WER and CER under named, versioned, hash-identified normalisation policies, by Bayanat Labs."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "Apache-2.0 AND CC-BY-4.0"
+license-files = ["LICENSE", "LICENSE-data", "NOTICE"]
+authors = [{ name = "Bayanat Labs" }]
+dependencies = [
+  "arabic-normalize @ git+https://github.com/Bayanat-Labs/arabic-normalize@dcc7f31cc5ae8b7b09e3de8401dcebe7aabc0240",
+  "rapidfuzz>=3.0",
+]
+keywords = ["arabic", "wer", "cer", "word-error-rate", "speech-recognition", "asr", "asr-evaluation",
+            "normalization", "jiwer", "arabic-nlp"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "Intended Audience :: Science/Research",
+  "Natural Language :: Arabic",
+  "Operating System :: OS Independent",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+  "Topic :: Multimedia :: Sound/Audio :: Speech",
+  "Topic :: Scientific/Engineering :: Artificial Intelligence",
+  "Topic :: Text Processing :: Linguistic",
+  "Typing :: Typed",
+]
+
+[project.optional-dependencies]
+jiwer = ["jiwer>=4.0"]
+test = ["pytest>=7", "jiwer==4.0.0"]
+
+[project.urls]
+Homepage = "https://github.com/Bayanat-Labs/arabicwer"
+Repository = "https://github.com/Bayanat-Labs/arabicwer"
+Issues = "https://github.com/Bayanat-Labs/arabicwer/issues"
+Specification = "https://github.com/Bayanat-Labs/arabicwer/blob/main/spec/SPEC.md"
+
+[project.scripts]
+arabicwer = "arabicwer.cli:main"
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+packages = ["arabicwer", "arabicwer.policies"]
+
+[tool.setuptools.package-data]
+arabicwer = ["py.typed"]
+"arabicwer.policies" = ["*.json"]
+
+[tool.setuptools.dynamic]
+version = { attr = "arabicwer._version.__version__" }
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-p no:cacheprovider"

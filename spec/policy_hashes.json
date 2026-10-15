@@ -1,0 +1,8 @@
+{
+  "arabicwer-1/raw": "25a0985e81d51658b5c0f94661e2ffb1f5b6af5edb6ec4c3402adca351d05a87",
+  "arabicwer-1/nfc": "9cdd67869a6ce442bfb5ae2931bb18835bc9eaa9431589295b51bf9e8f5ec2c4",
+  "arabicwer-1/dediac": "46a6b2fb3d9475d006297af44a21e3dec95209005d2bd91833412e0acb589fbb",
+  "arabicwer-1/strict-orth": "83da6f52240c9ca5ce8a850a3a43bc0b03f50ccfde91a2acf1af267592a527ed",
+  "arabicwer-1/bayanat-norm-v1": "413cba6fa8e4021261f30c240d53281ee9759437d8b96c353ec5abc1f326a9f0",
+  "arabicwer-1/lenient": "b097f6eac978e001904c79ef0c4cacffde72e50a0e69bfe5b1492371a745d168"
+}

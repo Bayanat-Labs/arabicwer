@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; connect-src 'none'; worker-src 'self' blob:; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<title>ArabicWER – Arabic WER and CER calculator – Bayanat Labs</title>
+<meta name="description" content="Score Arabic speech recognition: WER and CER under six named normalisation policies side by side, with a word diff. Runs in your browser.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cg fill='%230b0b0d'%3E%3Cpath d='M32 6 A26 26 0 0 0 32 58 Z'/%3E%3Ccircle cx='38' cy='16' r='3'/%3E%3Ccircle cx='38' cy='32' r='3'/%3E%3Ccircle cx='38' cy='48' r='3'/%3E%3Ccircle cx='46' cy='24' r='3'/%3E%3Ccircle cx='46' cy='40' r='3'/%3E%3C/g%3E%3Ccircle cx='54' cy='32' r='3' fill='%236366f1'/%3E%3C/svg%3E">
+<link rel="preload" href="fonts/IBMPlexSansArabic-Regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<a class="skip" href="#ref" data-i18n="skip">Skip to the calculator</a>
+<header class="top">
+  <div class="wrap top-row">
+    <a class="brand" href="https://www.bayanatlabs.com" rel="noopener" target="_blank">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true" focusable="false">
+        <g class="mark-ink">
+          <path d="M32 6 A26 26 0 0 0 32 58 Z"/>
+          <circle cx="38" cy="8" r="2.6"/><circle cx="38" cy="16" r="2.6"/><circle cx="38" cy="24" r="2.6"/><circle cx="38" cy="32" r="2.6"/><circle cx="38" cy="40" r="2.6"/><circle cx="38" cy="48" r="2.6"/><circle cx="38" cy="56" r="2.6"/>
+          <circle cx="46" cy="14" r="2.6"/><circle cx="46" cy="22" r="2.6"/><circle cx="46" cy="30" r="2.6"/><circle cx="46" cy="38" r="2.6"/><circle cx="46" cy="46" r="2.6"/>
+        </g>
+        <g class="mark-accent"><circle cx="54" cy="24" r="2.6"/><circle cx="54" cy="32" r="2.6"/><circle cx="54" cy="40" r="2.6"/></g>
+      </svg>
+      <span data-i18n="brand">Bayanat Labs</span>
+    </a>
+    <button type="button" id="lang-toggle" class="lang" lang="ar" dir="rtl">العربية</button>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="intro">
+    <h1 data-i18n="title">ArabicWER: Arabic WER and CER calculator</h1>
+    <p class="lede" data-i18n="lede">Paste reference and hypothesis transcripts, or upload a TSV file, and see the word and character error rates under six named, versioned normalisation policies side by side, with a word-by-word diff.</p>
+    <p class="privacy" data-i18n="privacy">Scoring runs in your browser. Your text is not uploaded, stored or logged.</p>
+    <p class="note ar-only" lang="en" dir="ltr" id="ar-note" hidden>The Arabic text has not yet been reviewed by a native Arabic writer; the English governs.</p>
+  </section>
+
+  <section class="card" aria-labelledby="input-h">
+    <div class="row between">
+      <h2 id="input-h" data-i18n="inputH">Transcripts</h2>
+      <div class="tabs" role="tablist" aria-label="Input mode">
+        <button type="button" role="tab" id="tab-paste" aria-selected="true" aria-controls="panel-paste" data-i18n="tabPaste">Paste</button>
+        <button type="button" role="tab" id="tab-tsv" aria-selected="false" aria-controls="panel-tsv" data-i18n="tabTsv">Upload TSV</button>
+      </div>
+    </div>
+    <div id="panel-paste" role="tabpanel" aria-labelledby="tab-paste">
+      <p class="note" data-i18n="pasteNote">One utterance per line. Line 1 of the reference is scored against line 1 of the hypothesis, and so on.</p>
+      <div class="grid">
+        <div>
+          <label for="ref" class="lbl" data-i18n="refLabel">Reference (what was said)</label>
+          <textarea id="ref" dir="auto" rows="6" spellcheck="false" autocomplete="off"></textarea>
+        </div>
+        <div>
+          <label for="hyp" class="lbl" data-i18n="hypLabel">Hypothesis (what the system wrote)</label>
+          <textarea id="hyp" dir="auto" rows="6" spellcheck="false" autocomplete="off"></textarea>
+        </div>
+      </div>
+    </div>
+    <div id="panel-tsv" role="tabpanel" aria-labelledby="tab-tsv" hidden>
+      <p class="note" data-i18n="tsvNote">A UTF-8 file with one pair per line: id, reference and hypothesis separated by tabs (or reference and hypothesis only). A first line "id, reference, hypothesis" is treated as a header. Up to 10 MiB and 10,000 pairs. The file is read in this browser tab only.</p>
+      <label for="tsv" class="lbl" data-i18n="tsvLabel">TSV file</label>
+      <input type="file" id="tsv" accept=".tsv,.txt,text/tab-separated-values,text/plain">
+      <p class="note" id="tsv-name"></p>
+    </div>
+    <div class="row">
+      <button type="button" id="score" class="btn primary" data-i18n="score">Score</button>
+      <button type="button" id="worked" class="btn" data-i18n="worked">Worked example</button>
+      <button type="button" id="clear" class="btn" data-i18n="clear">Clear</button>
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+    <p class="error" id="error" role="alert" hidden></p>
+  </section>
+
+  <section class="card" id="results" aria-labelledby="results-h" hidden>
+    <h2 id="results-h" data-i18n="resultsH">Scores under every policy</h2>
+    <p id="summary-line" class="summary"></p>
+    <div class="table-wrap">
+      <table id="scores">
+        <thead><tr>
+          <th scope="col" data-i18n="colPolicy">Policy</th>
+          <th scope="col" class="num">WER</th>
+          <th scope="col" class="num">CER</th>
+          <th scope="col" class="num" data-i18n="colS">S</th>
+          <th scope="col" class="num" data-i18n="colD">D</th>
+          <th scope="col" class="num" data-i18n="colI">I</th>
+          <th scope="col" class="num" data-i18n="colN">N</th>
+          <th scope="col" class="hashcol" data-i18n="colHash">Policy SHA-256</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="note" data-i18n="scoresNote">Corpus rates: all errors divided by all reference words (or characters). S substitutions, D deletions, I insertions, N reference words. A pair with an empty reference has no rate of its own; its insertions still count.</p>
+    <p class="cite"><span class="lbl" data-i18n="citeLabel">Cite a score as</span> <code id="cite" dir="ltr"></code> <button type="button" class="btn small" id="copy-cite" data-i18n="copy">Copy</button></p>
+    <div class="row">
+      <button type="button" class="btn" id="dl-json" data-i18n="dlJson">Download results (JSON)</button>
+      <button type="button" class="btn" id="dl-csv" data-i18n="dlCsv">Download results (CSV)</button>
+    </div>
+  </section>
+
+  <section class="card" id="diff-card" aria-labelledby="diff-h" hidden>
+    <div class="row between">
+      <h2 id="diff-h" data-i18n="diffH">Word alignment</h2>
+      <div class="picker">
+        <label for="diff-policy" class="lbl" data-i18n="diffPolicy">Policy</label>
+        <select id="diff-policy"></select>
+      </div>
+    </div>
+    <p class="legend">
+      <span class="tok sub"><span class="lab">S</span></span><span data-i18n="legendS">substitution: reference word struck through, then what the system wrote</span>
+      <span class="tok del"><span class="lab">D</span></span><span data-i18n="legendD">deletion: a reference word the system missed</span>
+      <span class="tok ins"><span class="lab">I</span></span><span data-i18n="legendI">insertion: a word the system added</span>
+    </p>
+    <div id="diffs"></div>
+    <p class="note" id="diff-note" hidden></p>
+  </section>
+
+  <section class="card how" aria-labelledby="pol-h">
+    <h2 id="pol-h" data-i18n="polH">The six policies</h2>
+    <p class="note" data-i18n="polNote">Each policy is an immutable JSON file identified by its SHA-256. Any change in behaviour gets a new policy id; arabicwer-1 policies never change.</p>
+    <div class="table-wrap"><table id="policies"><thead><tr>
+      <th scope="col" data-i18n="colPolicy">Policy</th><th scope="col" data-i18n="colWhat">What it does</th>
+    </tr></thead><tbody></tbody></table></div>
+  </section>
+
+  <section class="card how" aria-labelledby="how-h">
+    <h2 id="how-h" data-i18n="howH">How it is computed</h2>
+    <ol>
+      <li data-i18n="how1">Each policy normalises both texts with arabic-normalize, using Unicode 18.0.0 data bundled with the page, so the result does not depend on your browser.</li>
+      <li data-i18n="how2">Words are the runs of characters between white space. Characters for CER are the code points of the words joined by single spaces.</li>
+      <li data-i18n="how3">Words (or characters) are aligned with the Levenshtein distance. When several alignments cost the same, the one that keeps more matches is used, and the rule is written in the specification so that every implementation agrees.</li>
+      <li data-i18n="how4">WER = (S + D + I) / N, summed over all pairs before dividing. Under the raw policy, for space-separated text with a non-empty reference, the WER and CER equal those of jiwer 4.0.0.</li>
+      <li data-i18n="how5">The page gives the same numbers as the Python package arabicwer on every conformance fixture.</li>
+    </ol>
+  </section>
+
+  <section class="cta">
+    <h2 data-i18n="ctaH">Need production-grade, rights-cleared Arabic speech data?</h2>
+    <p data-i18n="ctaText">Bayanat Labs builds licensed Arabic speech datasets and evaluation sets.</p>
+    <a class="btn primary" id="cta-link" href="https://www.bayanatlabs.com/products/voice" target="_blank" rel="noopener" data-i18n="ctaLink">See Bayanat Voice</a>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot-row">
+    <p><strong data-i18n="brand">Bayanat Labs</strong> · <span id="version" dir="ltr"></span></p>
+    <p class="links">
+      <a href="https://github.com/Bayanat-Labs/arabicwer" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://huggingface.co/datasets/Bayanat-Labs/arabicwer-fixtures" target="_blank" rel="noopener" data-i18n="fixturesLink">Fixtures and case study</a>
+      <a href="mailto:hello@bayanatlabs.com">hello@bayanatlabs.com</a>
+    </p>
+    <p class="fine" data-i18n="licence">Code: Apache-2.0. Policy files and examples: CC BY 4.0. Unicode tables: Unicode License V3. Font: IBM Plex Sans Arabic, SIL OFL 1.1.</p>
+  </div>
+</footer>
+</body>
+</html>

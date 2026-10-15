@@ -1,0 +1,47 @@
+{
+  "policy_id": "arabicwer-1/strict-orth",
+  "name": "strict-orth",
+  "spec": "arabicwer-spec-1",
+  "normaliser": {
+    "policy_id": "arabicwer-1-strict-orth",
+    "version": 1,
+    "spec": "arabic-normalize-spec-1",
+    "unicode_version": "18.0.0",
+    "unicode_form": "NFC",
+    "idempotent": true,
+    "stages": {
+      "reject_invalid": "drop",
+      "strip_controls": "strip",
+      "presentation_forms": "map",
+      "ligatures_honorific": "keep",
+      "bidi_zw": "strip",
+      "tatweel": "strip",
+      "diacritics": "strip",
+      "quranic_marks": "strip",
+      "superscript_alef": "strip",
+      "alef_variants": "keep",
+      "alef_maqsura": "keep",
+      "taa_marbuta": "keep",
+      "hamza_carriers": "keep",
+      "persian_urdu_letters": "keep",
+      "digits": "ascii",
+      "punctuation": "strip",
+      "whitespace": "collapse",
+      "latin_case": "lower"
+    }
+  },
+  "tokens": {
+    "words": "split-on-white-space",
+    "characters": "code-points-of-words-joined-by-one-space"
+  },
+  "meta": {
+    "title_en": "Strict orthography: diacritics removed, digits unified",
+    "title_ar": "إملاء صارم: حذف التشكيل وتوحيد الأرقام",
+    "description_en": "As dediac, plus Arabic-Indic and Extended Arabic-Indic digits mapped to ASCII. Hamza, alef maqsura and taa marbuta spelling errors still count.",
+    "description_ar": "مثل dediac، مع تحويل الأرقام العربية الهندية والفارسية إلى أرقام ASCII. تبقى أخطاء الهمزة والألف المقصورة والتاء المربوطة محسوبة.",
+    "license": "CC-BY-4.0",
+    "attribution": "Bayanat Labs (https://bayanatlabs.com)",
+    "created": "2026-10-15",
+    "status": "pilot"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "policy_id": "arabicwer-1/dediac",
+  "name": "dediac",
+  "spec": "arabicwer-spec-1",
+  "normaliser": {
+    "policy_id": "arabicwer-1-dediac",
+    "version": 1,
+    "spec": "arabic-normalize-spec-1",
+    "unicode_version": "18.0.0",
+    "unicode_form": "NFC",
+    "idempotent": true,
+    "stages": {
+      "reject_invalid": "drop",
+      "strip_controls": "strip",
+      "presentation_forms": "map",
+      "ligatures_honorific": "keep",
+      "bidi_zw": "strip",
+      "tatweel": "strip",
+      "diacritics": "strip",
+      "quranic_marks": "strip",
+      "superscript_alef": "strip",
+      "alef_variants": "keep",
+      "alef_maqsura": "keep",
+      "taa_marbuta": "keep",
+      "hamza_carriers": "keep",
+      "persian_urdu_letters": "keep",
+      "digits": "keep",
+      "punctuation": "strip",
+      "whitespace": "collapse",
+      "latin_case": "lower"
+    }
+  },
+  "tokens": {
+    "words": "split-on-white-space",
+    "characters": "code-points-of-words-joined-by-one-space"
+  },
+  "meta": {
+    "title_en": "Diacritics removed",
+    "title_ar": "حذف التشكيل",
+    "description_en": "NFC, presentation forms mapped, invisible controls removed, tatweel, harakat, Quranic marks and superscript alef removed, punctuation replaced by spaces, Latin lowercased. Letters and digits are compared as written.",
+    "description_ar": "NFC، وتحويل الأشكال العرضية، وحذف المحارف الخفية، وحذف التطويل والحركات وعلامات المصحف والألف الخنجرية، واستبدال علامات الترقيم بمسافات، وتصغير الحروف اللاتينية. تُقارن الحروف والأرقام كما كُتبت.",
+    "license": "CC-BY-4.0",
+    "attribution": "Bayanat Labs (https://bayanatlabs.com)",
+    "created": "2026-10-15",
+    "status": "pilot"
+  }
+}

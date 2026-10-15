@@ -1,0 +1,707 @@
+{
+ "arabicwer_version": "0.1.0",
+ "spec": "arabicwer-spec-1",
+ "dataset": "google/fleurs ar_eg test (revision 70bb2e84b976b7e960aa89f1c648e09c59f894dd)",
+ "reference_field": "raw_transcription",
+ "utterances": 100,
+ "audio_seconds": 1127.4,
+ "split_rows_total": 428,
+ "bootstrap": {
+  "resamples": 1000,
+  "seed": 0
+ },
+ "models": {
+  "large-v3-turbo": {
+   "model_id": "openai/whisper-large-v3-turbo",
+   "model_weights": "mobiuslabsgmbh/faster-whisper-large-v3-turbo@0a363e9161cbc7ed1431c9597a8ceaf0c4f78fcf",
+   "runtime": "faster-whisper 1.2.1, CTranslate2 4.8.3, CPU, int8",
+   "decode_params": {
+    "language": "ar",
+    "task": "transcribe",
+    "beam_size": 5,
+    "temperature": 0.0,
+    "vad_filter": false,
+    "condition_on_previous_text": false
+   },
+   "policies": [
+    {
+     "policy_id": "arabicwer-1/raw",
+     "name": "raw",
+     "policy_sha256": "25a0985e81d51658b5c0f94661e2ffb1f5b6af5edb6ec4c3402adca351d05a87",
+     "words": {
+      "substitutions": 468,
+      "deletions": 12,
+      "insertions": 3,
+      "hits": 1409,
+      "reference_units": 1889,
+      "wer": 0.25569084171519324,
+      "mean_pair_wer": 0.2626948241799918
+     },
+     "characters": {
+      "substitutions": 140,
+      "deletions": 509,
+      "insertions": 62,
+      "hits": 10714,
+      "reference_units": 11363,
+      "cer": 0.06257150400422423,
+      "mean_pair_cer": 0.06377308937290953
+     },
+     "empty_references": 0,
+     "bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "wer_ci95": [
+       0.2288261515601783,
+       0.28326403326403327
+      ],
+      "cer_ci95": [
+       0.054757705551356346,
+       0.07109346806207145
+      ]
+     }
+    },
+    {
+     "policy_id": "arabicwer-1/nfc",
+     "name": "nfc",
+     "policy_sha256": "9cdd67869a6ce442bfb5ae2931bb18835bc9eaa9431589295b51bf9e8f5ec2c4",
+     "words": {
+      "substitutions": 468,
+      "deletions": 12,
+      "insertions": 3,
+      "hits": 1409,
+      "reference_units": 1889,
+      "wer": 0.25569084171519324,
+      "mean_pair_wer": 0.2626948241799918
+     },
+     "characters": {
+      "substitutions": 140,
+      "deletions": 509,
+      "insertions": 62,
+      "hits": 10714,
+      "reference_units": 11363,
+      "cer": 0.06257150400422423,
+      "mean_pair_cer": 0.06377308937290953
+     },
+     "empty_references": 0,
+     "bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "wer_ci95": [
+       0.2288261515601783,
+       0.28326403326403327
+      ],
+      "cer_ci95": [
+       0.054757705551356346,
+       0.07109346806207145
+      ]
+     }
+    },
+    {
+     "policy_id": "arabicwer-1/dediac",
+     "name": "dediac",
+     "policy_sha256": "46a6b2fb3d9475d006297af44a21e3dec95209005d2bd91833412e0acb589fbb",
+     "words": {
+      "substitutions": 191,
+      "deletions": 11,
+      "insertions": 1,
+      "hits": 1690,
+      "reference_units": 1892,
+      "wer": 0.10729386892177589,
+      "mean_pair_wer": 0.10960121711213483
+     },
+     "characters": {
+      "substitutions": 134,
+      "deletions": 139,
+      "insertions": 59,
+      "hits": 10707,
+      "reference_units": 10980,
+      "cer": 0.0302367941712204,
+      "mean_pair_cer": 0.030897065590205067
+     },
+     "empty_references": 0,
+     "bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "wer_ci95": [
+       0.08727655099894847,
+       0.12997198879551822
+      ],
+      "cer_ci95": [
+       0.02349799732977303,
+       0.0378698224852071
+      ]
+     }
+    },
+    {
+     "policy_id": "arabicwer-1/strict-orth",
+     "name": "strict-orth",
+     "policy_sha256": "83da6f52240c9ca5ce8a850a3a43bc0b03f50ccfde91a2acf1af267592a527ed",
+     "words": {
+      "substitutions": 187,
+      "deletions": 11,
+      "insertions": 1,
+      "hits": 1694,
+      "reference_units": 1892,
+      "wer": 0.10517970401691332,
+      "mean_pair_wer": 0.10762502663594437
+     },
+     "characters": {
+      "substitutions": 120,
+      "deletions": 139,
+      "insertions": 59,
+      "hits": 10721,
+      "reference_units": 10980,
+      "cer": 0.02896174863387978,
+      "mean_pair_cer": 0.029632184637824115
+     },
+     "empty_references": 0,
+     "bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "wer_ci95": [
+       0.08528784648187633,
+       0.12748171368861025
+      ],
+      "cer_ci95": [
+       0.02213613724405091,
+       0.036347750109218
+      ]
+     }
+    },
+    {
+     "policy_id": "arabicwer-1/bayanat-norm-v1",
+     "name": "bayanat-norm-v1",
+     "policy_sha256": "413cba6fa8e4021261f30c240d53281ee9759437d8b96c353ec5abc1f326a9f0",
+     "words": {
+      "substitutions": 176,
+      "deletions": 11,
+      "insertions": 1,
+      "hits": 1705,
+      "reference_units": 1892,
+      "wer": 0.09936575052854123,
+      "mean_pair_wer": 0.102226485521886
+     },
+     "characters": {
+      "substitutions": 101,
+      "deletions": 139,
+      "insertions": 59,
+      "hits": 10740,
+      "reference_units": 10980,
+      "cer": 0.027231329690346084,
+      "mean_pair_cer": 0.02819752015620047
+     },
+     "empty_references": 0,
+     "bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "wer_ci95": [
+       0.07987711213517665,
+       0.1203125
+      ],
+      "cer_ci95": [
+       0.0207286432160804,
+       0.03470031545741325
+      ]
+     }
+    },
+    {
+     "policy_id": "arabicwer-1/lenient",
+     "name": "lenient",
+     "policy_sha256": "b097f6eac978e001904c79ef0c4cacffde72e50a0e69bfe5b1492371a745d168",
+     "words": {
+      "substitutions": 175,
+      "deletions": 11,
+      "insertions": 1,
+      "hits": 1706,
+      "reference_units": 1892,
+      "wer": 0.09883720930232558,
+      "mean_pair_wer": 0.10177194006734055
+     },
+     "characters": {
+      "substitutions": 99,
+      "deletions": 139,
+      "insertions": 59,
+      "hits": 10742,
+      "reference_units": 10980,
+      "cer": 0.027049180327868853,
+      "mean_pair_cer": 0.028032774393488603
+     },
+     "empty_references": 0,
+     "bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "wer_ci95": [
+       0.07972177635098983,
+       0.11979166666666667
+      ],
+      "cer_ci95": [
+       0.020459440057430008,
+       0.034529797936738
+      ]
+     }
+    }
+   ],
+   "swing": {
+    "wer": {
+     "max": 0.25569084171519324,
+     "max_policy": "arabicwer-1/raw",
+     "min": 0.09883720930232558,
+     "min_policy": "arabicwer-1/lenient",
+     "swing": 0.15685363241286765,
+     "swing_ci95": [
+      0.13674469072810816,
+      0.17791765164903264
+     ]
+    },
+    "cer": {
+     "max": 0.06257150400422423,
+     "max_policy": "arabicwer-1/raw",
+     "min": 0.027049180327868853,
+     "min_policy": "arabicwer-1/lenient",
+     "swing": 0.03552232367635538
+    }
+   },
+   "ablation": {
+    "lenient_wer": 0.09883720930232558,
+    "rules": [
+     {
+      "rule": "R04",
+      "stage": "ligatures_honorific",
+      "wer_without_rule": 0.09883720930232558,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R02",
+      "stage": "strip_controls",
+      "wer_without_rule": 0.09883720930232558,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R03",
+      "stage": "presentation_forms",
+      "wer_without_rule": 0.09883720930232558,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R05",
+      "stage": "bidi_zw",
+      "wer_without_rule": 0.09883720930232558,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R07",
+      "stage": "tatweel",
+      "wer_without_rule": 0.09883720930232558,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R08",
+      "stage": "diacritics",
+      "wer_without_rule": 0.14429175475687103,
+      "delta_points": 4.545454545454546
+     },
+     {
+      "rule": "R09",
+      "stage": "quranic_marks",
+      "wer_without_rule": 0.09883720930232558,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R10",
+      "stage": "superscript_alef",
+      "wer_without_rule": 0.09883720930232558,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R11",
+      "stage": "alef_variants",
+      "wer_without_rule": 0.10412262156448203,
+      "delta_points": 0.5285412262156453
+     },
+     {
+      "rule": "R12",
+      "stage": "alef_maqsura",
+      "wer_without_rule": 0.09936575052854123,
+      "delta_points": 0.05285412262156508
+     },
+     {
+      "rule": "R13",
+      "stage": "taa_marbuta",
+      "wer_without_rule": 0.09936575052854123,
+      "delta_points": 0.05285412262156508
+     },
+     {
+      "rule": "R15",
+      "stage": "persian_urdu_letters",
+      "wer_without_rule": 0.09883720930232558,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R16",
+      "stage": "digits",
+      "wer_without_rule": 0.10095137420718817,
+      "delta_points": 0.21141649048625893
+     },
+     {
+      "rule": "R17",
+      "stage": "punctuation",
+      "wer_without_rule": 0.2069878242456326,
+      "delta_points": 10.815061494330704
+     },
+     {
+      "rule": "R19",
+      "stage": "latin_case",
+      "wer_without_rule": 0.09883720930232558,
+      "delta_points": 0.0
+     }
+    ]
+   }
+  },
+  "small": {
+   "model_id": "openai/whisper-small",
+   "model_weights": "Systran/faster-whisper-small@536b0662742c02347bc0e980a01041f333bce120",
+   "runtime": "faster-whisper 1.2.1, CTranslate2 4.8.3, CPU, int8",
+   "decode_params": {
+    "language": "ar",
+    "task": "transcribe",
+    "beam_size": 5,
+    "temperature": 0.0,
+    "vad_filter": false,
+    "condition_on_previous_text": false
+   },
+   "policies": [
+    {
+     "policy_id": "arabicwer-1/raw",
+     "name": "raw",
+     "policy_sha256": "25a0985e81d51658b5c0f94661e2ffb1f5b6af5edb6ec4c3402adca351d05a87",
+     "words": {
+      "substitutions": 705,
+      "deletions": 23,
+      "insertions": 12,
+      "hits": 1161,
+      "reference_units": 1889,
+      "wer": 0.39174166225516144,
+      "mean_pair_wer": 0.39708238321310807
+     },
+     "characters": {
+      "substitutions": 413,
+      "deletions": 663,
+      "insertions": 153,
+      "hits": 10287,
+      "reference_units": 11363,
+      "cer": 0.10815805685118367,
+      "mean_pair_cer": 0.10825501122134173
+     },
+     "empty_references": 0,
+     "bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "wer_ci95": [
+       0.3559754851889683,
+       0.42506666666666665
+      ],
+      "cer_ci95": [
+       0.09490863934717048,
+       0.12141500045236588
+      ]
+     }
+    },
+    {
+     "policy_id": "arabicwer-1/nfc",
+     "name": "nfc",
+     "policy_sha256": "9cdd67869a6ce442bfb5ae2931bb18835bc9eaa9431589295b51bf9e8f5ec2c4",
+     "words": {
+      "substitutions": 705,
+      "deletions": 23,
+      "insertions": 12,
+      "hits": 1161,
+      "reference_units": 1889,
+      "wer": 0.39174166225516144,
+      "mean_pair_wer": 0.39708238321310807
+     },
+     "characters": {
+      "substitutions": 413,
+      "deletions": 663,
+      "insertions": 153,
+      "hits": 10287,
+      "reference_units": 11363,
+      "cer": 0.10815805685118367,
+      "mean_pair_cer": 0.10825501122134173
+     },
+     "empty_references": 0,
+     "bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "wer_ci95": [
+       0.3559754851889683,
+       0.42506666666666665
+      ],
+      "cer_ci95": [
+       0.09490863934717048,
+       0.12141500045236588
+      ]
+     }
+    },
+    {
+     "policy_id": "arabicwer-1/dediac",
+     "name": "dediac",
+     "policy_sha256": "46a6b2fb3d9475d006297af44a21e3dec95209005d2bd91833412e0acb589fbb",
+     "words": {
+      "substitutions": 495,
+      "deletions": 22,
+      "insertions": 10,
+      "hits": 1375,
+      "reference_units": 1892,
+      "wer": 0.2785412262156448,
+      "mean_pair_wer": 0.2782991776522163
+     },
+     "characters": {
+      "substitutions": 395,
+      "deletions": 312,
+      "insertions": 164,
+      "hits": 10273,
+      "reference_units": 10980,
+      "cer": 0.07932604735883425,
+      "mean_pair_cer": 0.07919535940256009
+     },
+     "empty_references": 0,
+     "bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "wer_ci95": [
+       0.24411257897759908,
+       0.3117233927606699
+      ],
+      "cer_ci95": [
+       0.06564833090191367,
+       0.09213647144681628
+      ]
+     }
+    },
+    {
+     "policy_id": "arabicwer-1/strict-orth",
+     "name": "strict-orth",
+     "policy_sha256": "83da6f52240c9ca5ce8a850a3a43bc0b03f50ccfde91a2acf1af267592a527ed",
+     "words": {
+      "substitutions": 491,
+      "deletions": 22,
+      "insertions": 10,
+      "hits": 1379,
+      "reference_units": 1892,
+      "wer": 0.27642706131078226,
+      "mean_pair_wer": 0.2763229871760258
+     },
+     "characters": {
+      "substitutions": 381,
+      "deletions": 312,
+      "insertions": 164,
+      "hits": 10287,
+      "reference_units": 10980,
+      "cer": 0.07805100182149362,
+      "mean_pair_cer": 0.07793047845017913
+     },
+     "empty_references": 0,
+     "bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "wer_ci95": [
+       0.24177010253642742,
+       0.3098745226404801
+      ],
+      "cer_ci95": [
+       0.06500484453448428,
+       0.09029761356307012
+      ]
+     }
+    },
+    {
+     "policy_id": "arabicwer-1/bayanat-norm-v1",
+     "name": "bayanat-norm-v1",
+     "policy_sha256": "413cba6fa8e4021261f30c240d53281ee9759437d8b96c353ec5abc1f326a9f0",
+     "words": {
+      "substitutions": 458,
+      "deletions": 22,
+      "insertions": 10,
+      "hits": 1412,
+      "reference_units": 1892,
+      "wer": 0.25898520084566595,
+      "mean_pair_wer": 0.25711631974904575
+     },
+     "characters": {
+      "substitutions": 328,
+      "deletions": 313,
+      "insertions": 165,
+      "hits": 10339,
+      "reference_units": 10980,
+      "cer": 0.07340619307832423,
+      "mean_pair_cer": 0.0731168088938212
+     },
+     "empty_references": 0,
+     "bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "wer_ci95": [
+       0.22578974624546866,
+       0.2905441098784997
+      ],
+      "cer_ci95": [
+       0.0605736682700873,
+       0.08542996620352986
+      ]
+     }
+    },
+    {
+     "policy_id": "arabicwer-1/lenient",
+     "name": "lenient",
+     "policy_sha256": "b097f6eac978e001904c79ef0c4cacffde72e50a0e69bfe5b1492371a745d168",
+     "words": {
+      "substitutions": 456,
+      "deletions": 22,
+      "insertions": 10,
+      "hits": 1414,
+      "reference_units": 1892,
+      "wer": 0.25792811839323465,
+      "mean_pair_wer": 0.25601487047368343
+     },
+     "characters": {
+      "substitutions": 323,
+      "deletions": 313,
+      "insertions": 165,
+      "hits": 10344,
+      "reference_units": 10980,
+      "cer": 0.07295081967213114,
+      "mean_pair_cer": 0.07265800241498853
+     },
+     "empty_references": 0,
+     "bootstrap": {
+      "resamples": 1000,
+      "seed": 0,
+      "wer_ci95": [
+       0.2256383533090151,
+       0.2898203592814371
+      ],
+      "cer_ci95": [
+       0.05999813380610245,
+       0.08514832895230942
+      ]
+     }
+    }
+   ],
+   "swing": {
+    "wer": {
+     "max": 0.39174166225516144,
+     "max_policy": "arabicwer-1/raw",
+     "min": 0.25792811839323465,
+     "min_policy": "arabicwer-1/lenient",
+     "swing": 0.1338135438619268,
+     "swing_ci95": [
+      0.11638262589823406,
+      0.1535355254914342
+     ]
+    },
+    "cer": {
+     "max": 0.10815805685118367,
+     "max_policy": "arabicwer-1/raw",
+     "min": 0.07295081967213114,
+     "min_policy": "arabicwer-1/lenient",
+     "swing": 0.035207237179052525
+    }
+   },
+   "ablation": {
+    "lenient_wer": 0.25792811839323465,
+    "rules": [
+     {
+      "rule": "R04",
+      "stage": "ligatures_honorific",
+      "wer_without_rule": 0.25792811839323465,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R02",
+      "stage": "strip_controls",
+      "wer_without_rule": 0.25792811839323465,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R03",
+      "stage": "presentation_forms",
+      "wer_without_rule": 0.25792811839323465,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R05",
+      "stage": "bidi_zw",
+      "wer_without_rule": 0.25792811839323465,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R07",
+      "stage": "tatweel",
+      "wer_without_rule": 0.25792811839323465,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R08",
+      "stage": "diacritics",
+      "wer_without_rule": 0.2912262156448203,
+      "delta_points": 3.329809725158567
+     },
+     {
+      "rule": "R09",
+      "stage": "quranic_marks",
+      "wer_without_rule": 0.25792811839323465,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R10",
+      "stage": "superscript_alef",
+      "wer_without_rule": 0.25792811839323465,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R11",
+      "stage": "alef_variants",
+      "wer_without_rule": 0.27536997885835096,
+      "delta_points": 1.744186046511631
+     },
+     {
+      "rule": "R12",
+      "stage": "alef_maqsura",
+      "wer_without_rule": 0.25792811839323465,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R13",
+      "stage": "taa_marbuta",
+      "wer_without_rule": 0.25898520084566595,
+      "delta_points": 0.10570824524313016
+     },
+     {
+      "rule": "R15",
+      "stage": "persian_urdu_letters",
+      "wer_without_rule": 0.25792811839323465,
+      "delta_points": 0.0
+     },
+     {
+      "rule": "R16",
+      "stage": "digits",
+      "wer_without_rule": 0.26004228329809725,
+      "delta_points": 0.21141649048626032
+     },
+     {
+      "rule": "R17",
+      "stage": "punctuation",
+      "wer_without_rule": 0.3451561672842774,
+      "delta_points": 8.722804889104275
+     },
+     {
+      "rule": "R19",
+      "stage": "latin_case",
+      "wer_without_rule": 0.25792811839323465,
+      "delta_points": 0.0
+     }
+    ]
+   }
+  }
+ }
+}

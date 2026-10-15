@@ -1,0 +1,47 @@
+{
+  "policy_id": "arabicwer-1/lenient",
+  "name": "lenient",
+  "spec": "arabicwer-spec-1",
+  "normaliser": {
+    "policy_id": "arabicwer-1-lenient",
+    "version": 1,
+    "spec": "arabic-normalize-spec-1",
+    "unicode_version": "18.0.0",
+    "unicode_form": "NFC",
+    "idempotent": true,
+    "stages": {
+      "reject_invalid": "drop",
+      "strip_controls": "strip",
+      "presentation_forms": "map",
+      "ligatures_honorific": "expand",
+      "bidi_zw": "strip",
+      "tatweel": "strip",
+      "diacritics": "strip",
+      "quranic_marks": "strip",
+      "superscript_alef": "strip",
+      "alef_variants": "map",
+      "alef_maqsura": "to-yeh",
+      "taa_marbuta": "to-heh",
+      "hamza_carriers": "keep",
+      "persian_urdu_letters": "map",
+      "digits": "ascii",
+      "punctuation": "strip",
+      "whitespace": "collapse",
+      "latin_case": "lower"
+    }
+  },
+  "tokens": {
+    "words": "split-on-white-space",
+    "characters": "code-points-of-words-joined-by-one-space"
+  },
+  "meta": {
+    "title_en": "Lenient orthography (default)",
+    "title_ar": "إملاء متسامح (الافتراضي)",
+    "description_en": "As strict-orth, plus alef variants (أ إ آ ٱ) to bare alef, alef maqsura to yeh, taa marbuta to heh, Persian and Urdu letter forms to Arabic letters, and honorific ligatures such as ﷺ expanded to their words. Forgives the spelling variation that is common in Arabic transcripts; hides real errors such as على for علي.",
+    "description_ar": "مثل strict-orth، مع توحيد صور الألف (أ إ آ ٱ) إلى ألف مجردة، والألف المقصورة إلى ياء، والتاء المربوطة إلى هاء، والحروف الفارسية والأردية إلى نظيراتها العربية، وفك ضمائم التعظيم مثل ﷺ إلى كلماتها. يتسامح مع اختلافات الإملاء الشائعة في النصوص العربية، لكنه يخفي أخطاء حقيقية مثل على مقابل علي.",
+    "license": "CC-BY-4.0",
+    "attribution": "Bayanat Labs (https://bayanatlabs.com)",
+    "created": "2026-10-15",
+    "status": "pilot"
+  }
+}

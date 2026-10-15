@@ -1,0 +1,47 @@
+{
+  "policy_id": "arabicwer-1/nfc",
+  "name": "nfc",
+  "spec": "arabicwer-spec-1",
+  "normaliser": {
+    "policy_id": "arabicwer-1-nfc",
+    "version": 1,
+    "spec": "arabic-normalize-spec-1",
+    "unicode_version": "18.0.0",
+    "unicode_form": "NFC",
+    "idempotent": true,
+    "stages": {
+      "reject_invalid": "drop",
+      "strip_controls": "keep",
+      "presentation_forms": "keep",
+      "ligatures_honorific": "keep",
+      "bidi_zw": "keep",
+      "tatweel": "keep",
+      "diacritics": "keep",
+      "quranic_marks": "keep",
+      "superscript_alef": "keep",
+      "alef_variants": "keep",
+      "alef_maqsura": "keep",
+      "taa_marbuta": "keep",
+      "hamza_carriers": "keep",
+      "persian_urdu_letters": "keep",
+      "digits": "keep",
+      "punctuation": "keep",
+      "whitespace": "collapse",
+      "latin_case": "keep"
+    }
+  },
+  "tokens": {
+    "words": "split-on-white-space",
+    "characters": "code-points-of-words-joined-by-one-space"
+  },
+  "meta": {
+    "title_en": "Unicode NFC only",
+    "title_ar": "صيغة يونيكود NFC فقط",
+    "description_en": "Unicode canonical composition (NFC) and white-space collapsing; invalid code points removed. Letters, marks, digits and punctuation are compared as written.",
+    "description_ar": "التركيب القانوني ليونيكود (NFC) وتوحيد المسافات، مع حذف نقاط الترميز غير الصالحة. تُقارن الحروف والعلامات والأرقام وعلامات الترقيم كما كُتبت.",
+    "license": "CC-BY-4.0",
+    "attribution": "Bayanat Labs (https://bayanatlabs.com)",
+    "created": "2026-10-15",
+    "status": "pilot"
+  }
+}

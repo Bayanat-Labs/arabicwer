@@ -1,0 +1,20 @@
+{
+  "policy_id": "arabicwer-1/raw",
+  "name": "raw",
+  "spec": "arabicwer-spec-1",
+  "normaliser": null,
+  "tokens": {
+    "words": "split-on-white-space",
+    "characters": "code-points-of-words-joined-by-one-space"
+  },
+  "meta": {
+    "title_en": "Raw text, split on white space",
+    "title_ar": "النص كما هو، مقسّمًا عند المسافات",
+    "description_en": "No normalisation. Words are the runs of non-white-space characters; leading, trailing and repeated white space is ignored. Use it to show how far normalisation moves a score.",
+    "description_ar": "دون أي توحيد. الكلمات هي المقاطع الخالية من المسافات، وتُهمل المسافات في البداية والنهاية والمسافات المكررة.",
+    "license": "CC-BY-4.0",
+    "attribution": "Bayanat Labs (https://bayanatlabs.com)",
+    "created": "2026-10-15",
+    "status": "pilot"
+  }
+}

@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use arabicwer, please cite it as below and name the policy you scored with, for example WER (arabicwer-1/lenient)."
+type: software
+title: "arabicwer: Arabic WER and CER under named, versioned normalisation policies"
+version: "0.1.0"
+date-released: "2026-10-15"
+license: Apache-2.0
+repository-code: "https://github.com/Bayanat-Labs/arabicwer"
+authors:
+  - name: "Bayanat Labs"
+keywords:
+  - arabic
+  - speech-recognition
+  - asr-evaluation
+  - word-error-rate
+  - character-error-rate
+  - text-normalization
+abstract: "A Python package, command line, specification and browser page for Arabic word and character error rates under six named, immutable, hash-identified normalisation policies (arabicwer-1: raw, nfc, dediac, strict-orth, bayanat-norm-v1, lenient), with conformance fixtures, a deterministic alignment rule and a case study on FLEURS Egyptian Arabic."

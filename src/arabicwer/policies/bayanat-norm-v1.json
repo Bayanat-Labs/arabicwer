@@ -1,0 +1,57 @@
+{
+  "policy_id": "arabicwer-1/bayanat-norm-v1",
+  "name": "bayanat-norm-v1",
+  "spec": "arabicwer-spec-1",
+  "normaliser": {
+    "policy_id": "arabicwer-1-bayanat-norm-v1",
+    "version": 1,
+    "spec": "arabic-normalize-spec-1",
+    "unicode_version": "18.0.0",
+    "unicode_form": "NFC",
+    "idempotent": true,
+    "stages": {
+      "reject_invalid": "drop",
+      "strip_controls": "strip",
+      "presentation_forms": "map",
+      "ligatures_honorific": "flag",
+      "bidi_zw": "strip-except-meaningful",
+      "tatweel": "strip",
+      "diacritics": "strip",
+      "quranic_marks": "strip",
+      "superscript_alef": "strip",
+      "alef_variants": "map",
+      "alef_maqsura": "to-yeh",
+      "taa_marbuta": "flag",
+      "hamza_carriers": "keep",
+      "persian_urdu_letters": "keep",
+      "digits": "ascii",
+      "punctuation": "strip",
+      "whitespace": "collapse",
+      "latin_case": "lower"
+    }
+  },
+  "tokens": {
+    "words": "split-on-white-space",
+    "characters": "code-points-of-words-joined-by-one-space"
+  },
+  "meta": {
+    "title_en": "bayanat-norm-v1 from arabic-normalize, for scoring",
+    "title_ar": "سياسة bayanat-norm-v1 من arabic-normalize، للتقييم",
+    "description_en": "The bayanat-norm-v1 policy of arabic-normalize (alef variants to bare alef, alef maqsura to yeh, taa marbuta kept, digits to ASCII, diacritics and tatweel removed) with three changes for word scoring: punctuation replaced by spaces, white space collapsed, Latin lowercased.",
+    "description_ar": "سياسة bayanat-norm-v1 من مكتبة arabic-normalize (توحيد صور الألف، والألف المقصورة إلى ياء، وإبقاء التاء المربوطة، والأرقام إلى ASCII، وحذف التشكيل والتطويل) مع ثلاثة تغييرات لتقييم الكلمات: استبدال علامات الترقيم بمسافات، وتوحيد المسافات، وتصغير الحروف اللاتينية.",
+    "license": "CC-BY-4.0",
+    "attribution": "Bayanat Labs (https://bayanatlabs.com)",
+    "created": "2026-10-15",
+    "status": "pilot",
+    "derived_from": {
+      "library": "arabic-normalize",
+      "policy_id": "bayanat-norm-v1",
+      "sha256": "ebdb82000d0762a65120ffa9311bc6f01b481b19d4348ea5bedb3ab23d759321",
+      "changed_stages": {
+        "punctuation": "strip",
+        "whitespace": "collapse",
+        "latin_case": "lower"
+      }
+    }
+  }
+}
